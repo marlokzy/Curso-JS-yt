@@ -48,7 +48,57 @@ elemento3.style.color = "blue";
 elemento3.style.backgroundColor = "red";
 // background-color => backgroundColor
 
-// Navegação entre nós
+// Navegação entre nós - é basicamente navegar entre elementos
+const elemento4 = document.querySelector("#meuInput");
+
+const pai = elemento4.parentNode;
+
+console.log(pai);
+
+// Obter o primeiro filho
+const primeiroFilho = pai.firstChild;
+console.log(primeiroFilho);
+
+// Obter o último filho
+const ultimoFilho = pai.lastChild;
+console.log(ultimoFilho);
+
+// Manipulação de estrutura do DOM
+const novoElemento = document.createElement("div");
+
+novoElemento.textContent = "Aqui tem JavaScript!";
+
+console.log(novoElemento);
+
+document.body.insertBefore(novoElemento, pai); // vai inserir no corpo do documento, vai inserir o novoElemento antes do pai
+
+document.body.removeChild(elementoPorId); // vai remover no corpo do documento, vai remover o elementoPorId
+
+// Eventos
+
+// click
+const botao = document.querySelector("button");
+
+botao.addEventListener("click", () => {
+    console.log("Botão clicado!");
+});
+
+// mouse
+const elemento5 = document.querySelector("#meuFormulario");
+
+elemento5.addEventListener("mouseover", () => {
+    console.log("O mouse passou aqui!");
+});
+
+// teclado
+const campoInput = document.querySelector("#meuInput");
+
+campoInput.addEventListener("keydown", () => {
+    console.log("Tecla pressionada!");
+});
+
+// continuar em 2:47:53 - com eventos em formulários
+
 
 
 
