@@ -1,5 +1,5 @@
 // fundamentos
-var minhaVariavel= "Olá mundo 777!"
+var minhaVariavel = "Olá mundo 777!";
 
 console.log(minhaVariavel);
 
@@ -19,8 +19,8 @@ var booleano = true; // or false
 
 console.log(typeof booleano);
 
-var meuObjeto = {}
-var meuArray = []
+var meuObjeto = {};
+var meuArray = [];
 var meuNull = null;
 var meuUndefined = undefined;
 
@@ -52,7 +52,7 @@ console.log(x / y);
 console.log(x == y); // == -> igual
 console.log(x != y); // != -> diferente
 
-console.log("5" == 5);// vai dar true, ou seja erro do código pq n é igual
+console.log("5" == 5); // vai dar true, ou seja erro do código pq n é igual
 
 // sempre utilize dessa forma vai gerar mais confiabilidade ao seu código
 console.log("5" === 5); // === -> igual em tudo até em seu tipo
@@ -72,9 +72,9 @@ console.log(10 < 5 || 20 < 5);
 
 // Conversão de tipos
 
-const meuNumero2 = "123"
+const meuNumero2 = "123";
 
-const meuNumeroConvertido= Number(meuNumero2); // Number -> para converter em número
+const meuNumeroConvertido = Number(meuNumero2); // Number -> para converter em número
 
 console.log(meuNumeroConvertido);
 console.log(typeof meuNumeroConvertido);
@@ -84,36 +84,36 @@ console.log(typeof meuNumeroConvertido);
 const idade = 19;
 
 if (idade < 13) {
-    console.log("Criança");
+  console.log("Criança");
 } else if (idade < 18) {
-    console.log("Adolescente");
-}else{
-    console.log("Adulto");
+  console.log("Adolescente");
+} else {
+  console.log("Adulto");
 }
 
 // usando a lógica com os tipos boolenos
 if (false) {
-    console.log("Isso executa");
+  console.log("Isso executa");
 } else {
-    console.log("Isso agora é executado");
+  console.log("Isso agora é executado");
 }
 
 // Switch
 
-const fruta = "Banana"
+const fruta = "Banana";
 
 switch (fruta) {
-    case "Banana":
-        console.log("Banana é a fruta!");
-        break;
+  case "Banana":
+    console.log("Banana é a fruta!");
+    break;
 
-    case "Maçã":
-        console.log("Maçã é a fruta!");
-        break;    
+  case "Maçã":
+    console.log("Maçã é a fruta!");
+    break;
 
-    default:
-        console.log("Fruta não encontrada!");
-        break;
+  default:
+    console.log("Fruta não encontrada!");
+    break;
 }
 
 // Estruturas de repetição
@@ -121,9 +121,9 @@ switch (fruta) {
 
 // for
 // contador(valor inicial), condição de limite, incremento
-for(let i = 0; i < 5; i = i + 1 /* ou i++ */) {
-    // concatenação
-    console.log("O valor de i é: "+ i);
+for (let i = 0; i < 5; i = i + 1 /* ou i++ */) {
+  // concatenação
+  console.log("O valor de i é: " + i);
 }
 
 // while
@@ -131,8 +131,8 @@ for(let i = 0; i < 5; i = i + 1 /* ou i++ */) {
 let k = 0;
 
 while (k < 5) {
-    console.log("O valor de k é: "+ k);
-    k++;
+  console.log("O valor de k é: " + k);
+  k++;
 }
 
 // do while
@@ -140,16 +140,16 @@ while (k < 5) {
 let j = 0;
 
 do {
-    console.log("O valor de j é: "+ j);
+  console.log("O valor de j é: " + j);
 
-    j++;
+  j++;
 } while (j < 5);
 
 // funções
 //function nome(arg1, arg2) {corpo}
 
 function cumprimentar(nome) {
-    console.log("Olá, "+ nome);
+  console.log("Olá, " + nome);
 }
 
 // invocação = nome()
@@ -159,11 +159,12 @@ cumprimentar("Marlon");
 
 let cor = "azul"; // escopo global
 
-function mostrarCor() { // escopo local
-    console.log("verde");
+function mostrarCor() {
+  // escopo local
+  console.log("verde");
 }
 
-console.log(cor);// escopo global
+console.log(cor); // escopo global
 
 mostrarCor(); // escopo local
 
@@ -173,8 +174,7 @@ mostrarCor(); // escopo local
 testeHoisting();
 
 function testeHoisting() {
-    console.log("Deu tudo certo!");
-    
+  console.log("Deu tudo certo!");
 }
 
 // arrow function
@@ -190,15 +190,15 @@ const minhaVariavel1 = ""; // falsy -> no JS variável sem nada é considerada f
 const minhaVariavel2 = "Algum texto"; // truthy -> no JS variável com algum texto é considerada verdadeira
 
 if (minhaVariavel1) {
-    console.log("Isso é verdadeiro");
+  console.log("Isso é verdadeiro");
 } else {
-    console.log("Isso é falso");
+  console.log("Isso é falso");
 }
 
 if (minhaVariavel2) {
-    console.log("Isso é verdadeiro");
+  console.log("Isso é verdadeiro");
 } else {
-    console.log("Isso é falso");
+  console.log("Isso é falso");
 }
 
 // array, listas
@@ -233,14 +233,14 @@ console.log(minhaString3);
 
 // interpolação
 
-const minhaString4 = `${minhaStringNova} Como você está?`; 
+const minhaString4 = `${minhaStringNova} Como você está?`;
 console.log(minhaString4);
 
 console.log(minhaString4.length); // mostrará a quantidade de caracteres
 console.log(minhaString4[5]);
 console.log(minhaString4.toUpperCase());
 
-// Data e hora 
+// Data e hora
 
 const agora = Date(); // puxa a data completa de hoje
 console.log(agora);

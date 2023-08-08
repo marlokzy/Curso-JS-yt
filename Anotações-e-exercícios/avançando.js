@@ -100,54 +100,53 @@ const promessa = new Promise((resolve, reject) => {
 });
 
 promessa
-  .then((mensagem) => { // método then irá executar a promessa
+  .then((mensagem) => {
+    // método then irá executar a promessa
     console.log(mensagem); // se a promessa for verdadeira irá executar a mensagem da condição verdadeira
   })
   .catch((erro) => {
     console.log(erro); // se a promessa for falsa irá executar a mensagem da condição falsa
   });
 
-
 // Biliotecas feitas que são "promise based"
 
 const promise1 = Promise.resolve(3); // essa foi instantenea
-const promise2 = new Promise((resolve, reject) => { // essa demorou 2,5s
-    setTimeout(resolve, 2500, "Testando");
+const promise2 = new Promise((resolve, reject) => {
+  // essa demorou 2,5s
+  setTimeout(resolve, 2500, "Testando");
 });
 
 Promise.all([promise1, promise2]).then((valores) => console.log(valores)); // all vai fazer com que os dois promises sejam executados ao mesmo tempo, então vai pegar o promise que tem mais tempo p ser executado e usar seu tempo, no caso pegou do promise2 -> 2,5s
 
-
 //Async Await
 async function obterValor() {
-    const promessa = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve("Valor obtido");
-        }, 2000);
-});
+  const promessa = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Valor obtido");
+    }, 2000);
+  });
 
-const valor = await promessa; // ao colocar await aqui ele vai esperar isso chegar para executar o comando de baixo
+  const valor = await promessa; // ao colocar await aqui ele vai esperar isso chegar para executar o comando de baixo
 
-console.log(valor);
+  console.log(valor);
 }
 
 obterValor(); // vai aparecer promisse pending ou seja eu acessei o valor da promessa antes que ela tenha se concretizada, então não tinha valor ali ainda.
 
 async function obterValorComErro() {
-    try {
-        const promessa = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                reject("Valor com erro");
-            }, 2000);
+  try {
+    const promessa = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject("Valor com erro");
+      }, 2000);
     });
 
     const valor = await promessa;
 
     console.log(valor);
-      } catch (error) {
-        console.log(error); 
-      }
-    
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 obterValorComErro();
@@ -159,7 +158,7 @@ obterValorComErro();
 
 // aqui nesse comando ele vai pegar o que tem no objeto e transformar em string para assim acontecer a comunicação
 // isso é o que vai ser mandado para o servidor
-const objeto = {nome: "Joao", idade: 30};
+const objeto = { nome: "Joao", idade: 30 };
 
 const jsonString = JSON.stringify(objeto);
 
@@ -176,5 +175,3 @@ const json = '{ "nome": "Joao", "idade": 30 }';
 const objeto2 = JSON.parse(json);
 
 console.log(objeto2);
-
-

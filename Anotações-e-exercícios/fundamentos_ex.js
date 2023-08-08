@@ -34,20 +34,19 @@ for (let i = 0; i < nomes.length; i++) {
 // Use o objeto Math para auxiliar nessa conversão.
 // Certifique-se de que sua função lida corretamente com horários na meia-noite e no meio-dia.
 function horario(f24) {
+  const [hora, minuto] = f24.split(":");
 
-    const [hora, minuto] = f24.split(":");
+  // 15 % 12 = 3, 23 % 12 = 11
+  // falsy 12 % 12 = 0 => 12
+  const f12 = hora % 12 || 12;
 
-    // 15 % 12 = 3, 23 % 12 = 11
-    // falsy 12 % 12 = 0 => 12
-    const f12 = hora % 12 || 12;
-    
-    let periodo = "AM";
+  let periodo = "AM";
 
-    if (f12 > 12) {
-        periodo = "PM";
-    }
+  if (f12 > 12) {
+    periodo = "PM";
+  }
 
-    console.log(`${f12}:${minuto} ${periodo}`);
+  console.log(`${f12}:${minuto} ${periodo}`);
 }
 
 horario("15:16");
