@@ -34,9 +34,9 @@ console.log(link.hasAttribute("target")); // hasAttribute para verificar se o at
 link.removeAttribute("target"); // removeAttribute para remover determinado atributo
 
 // Manipulação de classes do CSS
- const elemento = document.querySelector("#meuId");
+const elemento = document.querySelector("#meuId");
 
-element.classList.add("novaClasse"); // para adc uma nova classe 
+element.classList.add("novaClasse"); // para adc uma nova classe
 element.classList.remove("minhaClasse"); // para remover uma determinada classe
 element.classList.toggle("outraClasse"); // toggle -> se essa classe existe ele remove e se ñ existe ele coloca // nesse ele está colocando
 element.classList.toggle("outraClasse"); // nesse ele está removendo
@@ -80,26 +80,54 @@ document.body.removeChild(elementoPorId); // vai remover no corpo do documento, 
 const botao = document.querySelector("button");
 
 botao.addEventListener("click", () => {
-    console.log("Botão clicado!");
+  console.log("Botão clicado!");
 });
 
 // mouse
 const elemento5 = document.querySelector("#meuFormulario");
 
 elemento5.addEventListener("mouseover", () => {
-    console.log("O mouse passou aqui!");
+  console.log("O mouse passou aqui!");
 });
 
 // teclado
 const campoInput = document.querySelector("#meuInput");
 
 campoInput.addEventListener("keydown", () => {
-    console.log("Tecla pressionada!");
+  console.log("Tecla pressionada!");
 });
 
-// continuar em 2:47:53 - com eventos em formulários
+// formulário
+const form = document.querySelector("form");
 
+form.addEventListener("submit", (event) => {
+  event.preventDefault(); // ele não deixa o comportamento padrão do elemento acontecer -> no caso de formularios a pagina smp atualiza quando é enviado um form, ele n deixa isso acontecer mais
 
+  console.log("form enviado!");
+});
 
+// propagação de eventos
+document.querySelector("#elementoPai").addEventListener("click", () => {
+  console.log("Clique capturado no elemento pai");
+}); // nesse caso como coloquei o evento no elemento pai ele também propagará para o elemento filho
 
+// document.querySelector("#elementoFilho").addEventListener("click", () => {
+//     console.log("Clique capturado no elemento filho");
+// }) // nesse caso como coloquei o evento no elemento pai ele também propagará para o elemento filho -> irá retornar os dois eventos ao clicar no elemento filho.
 
+// e como eliminar essa propagação?
+document.querySelector("#elementoFilho").addEventListener("click", (event) => {
+  // event.stopPropagation(); -> desabilitei para o tópico de Delegação de eventos funcionar
+  console.log("Clique capturado no elemento filho");
+}); // irá retornar só esse evento
+
+// mais sobre o uso do preventDefault()
+document.querySelector("#meuLink").addEventListener("click", (event) => {
+  event.preventDefault();
+  console.log("Clicou no link");
+});
+
+// Delegação de eventos
+document.querySelector("#elementoPai").addEventListener("click", (event) => {
+  console.log("Evento delegado para o filho");
+});
