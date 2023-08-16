@@ -79,3 +79,5 @@ botoesNum.forEach((botao) => botao.addEventListener("click", insere_numero));
 botoesOpe.forEach((botao) => botao.addEventListener("click", insere_operador));
 
 botaoIgual.addEventListener("click", calcula);
+
+// arrumar o código dps pq o resultado está dando null!!!
