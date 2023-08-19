@@ -1,9 +1,93 @@
+// // Seleção dos elementos
+// const display = document.querySelector("#displayInput");
+// const botaoIgual = document.querySelector(".igual");
+// const botaoPonto = document.querySelector(".ponto");
+// const botoesNum = document.querySelectorAll(".num");
+// const botoesOpe = document.querySelectorAll(".operadores");
+
+// // Variáveis globais
+// let operacaoAtual = "";
+// let operador = null;
+// let valorAnterior = "";
+// let calculando = false;
+
+// // Funções
+// const atualizaDisplay = () => {
+//   display.value = operacaoAtual;
+// };
+
+// const insere_numero = (evento) => {
+//   if (calculando) {
+//     operacaoAtual = evento.target.textContent;
+//     calculando = false;
+//   } else {
+//     operacaoAtual += evento.target.textContent;
+//   }
+//   atualizaDisplay();
+// };
+
+// const insere_ponto = ()=> {
+//   if(operacaoAtual.indexOf(".")=== -1){
+//     operacaoAtual += ".";
+//     atualizaDisplay();
+//   }
+// }
+
+// const insere_operador = (evento)=> {
+//   if (operacaoAtual !== "") {
+//     if (!calculando) {
+//       if (operador !== null) {
+//         calcula();
+//       }
+//       valorAnterior = operacaoAtual;
+//       operacaoAtual = "";
+//     }
+//     operador = evento.target.textContent;
+//   }
+// }
+
+// const calcula = ()=> {
+//   let resultado = null;
+//   const operandoAnterior = parseFloat(valorAnterior);
+//   const operandoAtual = parseFloat(operacaoAtual);
+
+//   switch (operador) {
+//     case "+":
+//       resultado = operandoAnterior + operandoAtual;
+//       break;
+//     case "-":
+//       resultado = operandoAnterior - operandoAtual;
+//       break;
+//     case "*":
+//       resultado = operandoAnterior * operandoAtual;
+//       break;
+//     case "/":
+//       resultado = operandoAnterior / operandoAtual;
+//       break;
+//   }
+//   operacaoAtual = String(resultado);
+//   valorAnterior = operacaoAtual;
+//   calculando = true;
+//   atualizaDisplay();
+// }
+
+// // Eventos
+// botaoPonto.addEventListener("click", insere_ponto);
+
+// botoesNum.forEach((botao) => botao.addEventListener("click", insere_numero));
+
+// botoesOpe.forEach((botao) => botao.addEventListener("click", insere_operador));
+
+// botaoIgual.addEventListener("click", calcula);
+
+// // arrumar o código dps pq o resultado está dando null!!!
+
 // Seleção dos elementos
 const display = document.querySelector("#displayInput");
 const botaoIgual = document.querySelector(".igual");
 const botaoPonto = document.querySelector(".ponto");
-const botoesNum = document.querySelectorAll(".num");
-const botoesOpe = document.querySelectorAll(".operadores");
+const botoesNumeros = document.querySelectorAll(".num");
+const botoesOperadores = document.querySelectorAll(".operador");
 
 // Variáveis globais
 let operacaoAtual = "";
@@ -16,7 +100,7 @@ const atualizaDisplay = () => {
   display.value = operacaoAtual;
 };
 
-const insere_numero = (evento) => {
+const insereNumero = (evento) => {
   if (calculando) {
     operacaoAtual = evento.target.textContent;
     calculando = false;
@@ -26,27 +110,18 @@ const insere_numero = (evento) => {
   atualizaDisplay();
 };
 
-const insere_ponto = ()=> {
-  if(operacaoAtual.indexOf(".")=== -1){
-    operacaoAtual += ".";
-    atualizaDisplay();
-  }
-}
-
-const insere_operador = (evento)=> {
+const insereOperador = (evento) => {
   if (operacaoAtual !== "") {
     if (!calculando) {
-      if (operador !== null) {
-        calcula();
-      }
+      if (operador !== null) calcula();
       valorAnterior = operacaoAtual;
       operacaoAtual = "";
     }
     operador = evento.target.textContent;
   }
-}
+};
 
-const calcula = ()=> {
+const calcula = () => {
   let resultado = null;
   const operandoAnterior = parseFloat(valorAnterior);
   const operandoAtual = parseFloat(operacaoAtual);
@@ -62,22 +137,38 @@ const calcula = ()=> {
       resultado = operandoAnterior * operandoAtual;
       break;
     case "/":
-      resultado = operandoAnterior / operandoAtual;
+      if (operandoAtual !== 0) {
+        resultado = operandoAnterior / operandoAtual;
+      } else {
+        alert("Erro: Divisão por zero não é permitida!");
+        return;
+      }
       break;
   }
   operacaoAtual = String(resultado);
   valorAnterior = operacaoAtual;
   calculando = true;
   atualizaDisplay();
-}
+};
 
-// Eventos
-botaoPonto.addEventListener("click", insere_ponto);
+const inserePonto = () => {
+  if (operacaoAtual.indexOf(".") === -1) {
+    operacaoAtual += ".";
+    atualizaDisplay();
+  }
+};
 
-botoesNum.forEach((botao) => botao.addEventListener("click", insere_numero));
+// EventListeners
+botaoIgual.addEventListener("click", () => {
+  if (operador !== null && operacaoAtual !== "" && !calculando) {
+    calcula();
+    operador = null;
+  }
+});
+botaoPonto.addEventListener("click", inserePonto);
+botoesNumeros.forEach((botao) => botao.addEventListener("click", insereNumero));
+botoesOperadores.forEach((botao) =>
+  botao.addEventListener("click", insereOperador)
+);
 
-botoesOpe.forEach((botao) => botao.addEventListener("click", insere_operador));
-
-botaoIgual.addEventListener("click", calcula);
-
-// arrumar o código dps pq o resultado está dando null!!!
+//
