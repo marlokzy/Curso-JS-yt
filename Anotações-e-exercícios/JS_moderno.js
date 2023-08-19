@@ -135,3 +135,5 @@ console.log(mario);
 mario.falar();
 
 mario.falarFuncionario();
+
+// continuar em 3:47:40
